@@ -1,0 +1,10 @@
+% generate data
+
+%clear
+clear
+
+% sin(2*pi*x) x[0,1] 10 data
+interval=1/9;
+x=0:interval:1;
+
+y = sin(2*pi*x) + 

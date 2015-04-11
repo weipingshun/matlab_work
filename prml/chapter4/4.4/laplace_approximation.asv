@@ -1,0 +1,33 @@
+%% laplace approximation
+clear
+
+%{
+x = -4:0.1:4;
+len = length(x)
+sigmodx = 1./(ones(1,len) + exp(-20*x-4));
+p = exp((-x.^2)./2).*sigmodx;
+logp = -log(p)
+%}
+
+syms x;
+fp=exp(-x^2/2)*(1/(1+exp(-20*x-4)));
+
+xv=-2:0.1:4;
+pv=subs(fp,'x',xv);
+logpv=-log(pv);
+
+dp=diff(fp);
+dpzerox=fzero(char(dp),0);  %change dp to string
+
+ddp=diff(dp);    % 2 order
+a=subs(ddp,'x',dpzerox);
+
+q=(a/(2*pi))
+
+figure(1);
+hold on;
+plot(xv,pv,'y');
+
+figure(2);
+hold on;
+plot(xv,logpv,'y');
