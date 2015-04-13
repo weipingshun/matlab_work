@@ -20,11 +20,13 @@ sigma2 = zeros(n, 1);
 %               the data for the i-th feature and sigma2(i)
 %               should contain variance of the i-th feature.
 %
+%               n is feature dim
+%               m is sin 
 
-
-
-
-
+mu = (sum(X)/m)';                       %acc by column
+X_sub_mu = bsxfun(@minus, X, mu.');     %every row sub mu
+X_sub_mu_square = X_sub_mu.^2;          %every elment square
+sigma2 = (sum(X_sub_mu_square)/m)';
 
 
 

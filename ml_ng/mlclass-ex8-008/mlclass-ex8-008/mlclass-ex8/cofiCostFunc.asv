@@ -49,10 +49,9 @@ D_square_valid = R_valid .* D_square;
 J = sum(sum(D_square_valid))/2;
 
 %% X_grad is a matrix. num_movies * num_features
-X_grad =  D_valid * Theta; %num_movies_num_users X num_users num_features
+X_grad =  D_valid * Theta_grad;   % num_movies * num
 
-%% Theta_grad is a matrix. num_users * num_features
-Theta_grad = D_valid'* X;  %num_users_num_movies X num_movies_num_features
+
 
 
 
