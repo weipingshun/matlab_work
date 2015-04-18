@@ -54,15 +54,12 @@ X_grad =  D_valid * Theta; %num_movies_num_users X num_users num_features
 %% Theta_grad is a matrix. num_users * num_features
 Theta_grad = D_valid'* X;  %num_users_num_movies X num_movies_num_features
 
-
-
-
-
-
-
-
-
-
+%%regularize
+theta_reg = sum(sum(Theta .^ 2)) * lambda / 2;
+x_reg = sum(sum(X .^ 2)) * lambda / 2;
+J = J + theta_reg + x_reg;
+X_grad = X_grad + lambda * X;
+Theta_grad = Theta_grad + lambda * Theta; 
 % =============================================================
 
 grad = [X_grad(:); Theta_grad(:)];
